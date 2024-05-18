@@ -1,28 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { RecipeList } from "./types";
 
-export const BunsList = () => {
+interface BunsListProps {
+    buns: RecipeList
+}
 
-    const [recipes, setRecipes] = useState<RecipeList>([]);
+export const BunsList = (props: BunsListProps) => {
 
-    useEffect(() => {
-        const fetchData = async () => {
-            const response = await fetch("http://localhost:3000/buns");
-            const data = (await response.json()) as RecipeList;
-            setRecipes(data)
-        };
-        fetchData();
-
-    }, [])
-
+    
     return (
         <div>
-            {recipes.map((recipe) => (
-                <div key={recipe.slug}>
+            {props.buns.map((bun) => (
+                <div key={bun.slug}>
                     <h2>
-                    {recipe.name}
+                    {bun.name}
                     </h2>
-                    <img width={320} src={recipe.imageSrc} alt={recipe.name} />
+                    <img width={320} src={bun.imageSrc} alt={bun.name} />
                 </div>
             ))}
         </div>
