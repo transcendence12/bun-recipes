@@ -8,6 +8,7 @@ const server = Bun.serve({
     async fetch(req){
         const url = new URL(req.url);
         
+        
         if (url.pathname === "/app"){
             const buns: RecipeList = await (Bun.file("./data.json").json()) as RecipeList;
             const stream: ReactDOMServerReadableStream = await renderToReadableStream(
