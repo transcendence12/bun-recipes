@@ -11,5 +11,8 @@ export interface Recipe {
     ingredients: Ingredient[];
     instruction: Instruction[]
 }
-
+export interface RecipePreview {
+    name: string;
+    imageSrc: string;
+}
 export type RecipeList = Recipe[]
